@@ -5,7 +5,9 @@ import 'package:dictionary/resources/colour_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
+import '../../app/routes/app_routes.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/value_manager.dart';
 
@@ -27,8 +29,7 @@ class _SplashScreenState extends State<LoadingScreen> {
   }
   Future<void> get() async {
     await Future.delayed(const Duration(milliseconds: DurationConstant.d3000), () {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (_) => const HomePage()));
+      Get.toNamed(AppRoutes.home);
     });
 
   }
