@@ -29,7 +29,7 @@ class _SplashScreenState extends State<LoadingScreen> {
   }
   Future<void> get() async {
     await Future.delayed(const Duration(milliseconds: DurationConstant.d3000), () {
-      Get.toNamed(AppRoutes.home);
+      Get.offAllNamed(AppRoutes.home);
     });
 
   }
