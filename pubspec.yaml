@@ -32,6 +32,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/dummy-data.db
 
 
   fonts:
