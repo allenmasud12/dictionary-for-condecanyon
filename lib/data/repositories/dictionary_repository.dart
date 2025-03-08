@@ -17,5 +17,15 @@ class DictionaryRepository {
 
     return maps.map((map) => DictionaryModel.fromMap(map)).toList();
   }
+  Future<void> updateFavourite(int id, int fav) async {
+    final db = await dbHelper.database;
+    await db.update(
+      'dummy_data',
+      {'fav': fav},
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
 
 }
+

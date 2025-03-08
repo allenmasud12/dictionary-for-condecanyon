@@ -30,8 +30,8 @@ class _BottomBarState extends State<BottomBar> {
           selectedFontSize: AppSize.s10,
           items:  [
             BottomNavigationBarItem(
-              icon: const Icon(Icons.favorite),
-              activeIcon: Icon(Icons.favorite_border_outlined, color: ColorManager.primary,),
+              icon: const Icon(Icons.favorite_border_outlined),
+              activeIcon: Icon(Icons.favorite, color: ColorManager.primary,),
               label: 'Favourite',
             ),
 
@@ -42,7 +42,7 @@ class _BottomBarState extends State<BottomBar> {
             ),
 
             BottomNavigationBarItem(
-                icon: const Icon(Icons.menu),
+                icon: const Icon(Icons.menu_outlined),
                 activeIcon: Icon(Icons.menu, color: ColorManager.primary,),
                 label: "Menu"),
           ],

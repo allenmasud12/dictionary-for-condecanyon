@@ -8,22 +8,26 @@ import 'app/controller/theme_controller.dart';
 import 'data/datasources/local/database_helper.dart';
 import 'data/repositories/dictionary_repository.dart';
 import 'domain/usecases/get_words_usecase.dart';
+import 'domain/usecases/update_favourite_usecase.dart';
 
-
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   if (AppConfig.enableFirebase) {
     await Firebase.initializeApp();
   }
-  await DatabaseHelper.instance.initializeDatabase();
 
+  await DatabaseHelper.instance.initializeDatabase();
   Get.put(DatabaseHelper.instance);
-  Get.put(DictionaryRepository(Get.find()));
-  Get.put(GetWordsUseCase(Get.find()));
-  Get.put(DictionaryController(Get.find()));
+  Get.put(DictionaryRepository(Get.find<DatabaseHelper>()));
+  Get.put(GetWordsUseCase(Get.find<DictionaryRepository>()));
+  Get.put(UpdateFavouriteUseCase(Get.find<DictionaryRepository>()));
+  Get.put(DictionaryController(
+    Get.find<GetWordsUseCase>(),
+    Get.find<UpdateFavouriteUseCase>(),
+  ));
+
   Get.put(ThemeController());
+
   runApp(const MyApp());
 }
-
-
