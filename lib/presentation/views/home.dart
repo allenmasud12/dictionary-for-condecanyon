@@ -9,7 +9,13 @@ class HomeScreen extends StatelessWidget {
     final DictionaryController controller = Get.find();
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Dictionary")),
+      appBar: AppBar(
+        title: const Text("Dictionary"),
+        actions: [
+          Icon(Icons.search_rounded),
+          Icon(Icons.filter_list)
+        ],
+      ),
       body: Obx(() {
         if (controller.isLoading.value) {
           return const Center(child: CircularProgressIndicator());

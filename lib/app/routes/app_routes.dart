@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import '../../presentation/views/home.dart';
 import '../../presentation/views/loading_screen.dart';
+import '../../presentation/widgets/bottom_navbar.dart';
 
 
 class AppRoutes {
@@ -10,6 +10,6 @@ class AppRoutes {
 
   static final routes = [
     GetPage(name: initial, page: () => const LoadingScreen()),
-    GetPage(name: home, page: () =>  HomeScreen()),
+    GetPage(name: home, page: () =>  const BottomBar()),
   ];
 }
