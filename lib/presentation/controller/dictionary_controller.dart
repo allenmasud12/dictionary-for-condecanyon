@@ -29,19 +29,27 @@ class DictionaryController extends GetxController {
     }
   }
 
+  Future<void> getFavourite() async {
+    favouriteWords.clear();
+    favouriteWords.addAll(words.where((word) => word.fav == 1));
+  }
+
+
   /// Update favorite list
   void updateFavouriteList() {
     favouriteWords.assignAll(words.where((word) => word.fav == 1).toList());
   }
 
   /// Toggle favorite status
-  Future<void> toggleFavourite(int id, int fav) async {
-    int newStatus = fav == 1 ? 0 : 1;
-    await updateFavouriteUseCase(id, newStatus);
+  Future<void> toggleFavourite(int wordId) async {
+    final word = words.firstWhere((w) => w.id == wordId);
+    final newFavStatus = word.fav == 1 ? 0 : 1;
 
-    // Update UI
-    words.firstWhere((word) => word.id == id).fav = newStatus;
+    await updateFavouriteUseCase(wordId, newFavStatus);
+
+    word.fav = newFavStatus;
     words.refresh();
-    updateFavouriteList();
+    getFavourite();
   }
+
 }

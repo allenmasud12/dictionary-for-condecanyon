@@ -2,6 +2,7 @@ import 'package:dictionary/presentation/controller/dictionary_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'app/app.dart';
 import 'app/app_config.dart';
 import 'app/controller/theme_controller.dart';
@@ -26,7 +27,7 @@ void main() async {
     Get.find<GetWordsUseCase>(),
     Get.find<UpdateFavouriteUseCase>(),
   ));
-
+  await GetStorage.init();
   Get.put(ThemeController());
 
   runApp(const MyApp());

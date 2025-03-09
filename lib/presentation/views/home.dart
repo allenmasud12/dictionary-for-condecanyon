@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                   color: controller.words[index].fav == 1 ? Colors.red : Colors.grey,
                 ),
                 onPressed: () {
-                  controller.toggleFavourite(controller.words[index].id!, controller.words[index].fav);
+                  controller.toggleFavourite(controller.words[index].id!);
                 },
               ),
             );
